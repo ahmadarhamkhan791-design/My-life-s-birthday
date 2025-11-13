@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Happy Birthday ❤️</title>
+<style>
+  :root{--bg:#fff0f6;--card:#fff;--accent:#ff3b6b;--muted:#6b6b6b}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:linear-gradient(180deg,var(--bg),#fff);display:flex;align-items:center;justify-content:center;height:100vh}
+  .card{width:92%;max-width:760px;background:var(--card);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,0.12);padding:28px;position:relative;overflow:hidden}
+  .header{display:flex;align-items:center;gap:16px}
+  .avatar{width:84px;height:84px;border-radius:14px;background:url('https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=400&auto=format&fit=crop') center/cover;border:4px solid rgba(255,59,107,0.12)}
+  h1{margin:0;font-size:24px;color:var(--accent)}
+  p.lead{margin:8px 0 18px;color:var(--muted)}
+  .bigplay{display:flex;align-items:center;gap:10px;margin:18px 0}
+  .playbtn{
+    background:linear-gradient(90deg,var(--accent),#ff6f95);border:none;color:white;padding:14px 22px;border-radius:999px;font-size:18px;cursor:pointer;box-shadow:0 8px 20px rgba(255,59,107,0.16)
+  }
+  .note{font-size:13px;color:#8a8a8a;margin-top:8px}
+  .videoWrap{margin-top:18px;background:#000;border-radius:12px;overflow:hidden;display:none;position:relative;padding-top:56.25%}
+  .videoWrap iframe{position:absolute;left:0;top:0;width:100%;height:100%;border:0}
+  .hearts{position:absolute;right:-40px;top:-40px;opacity:0.08;width:300px;height:300px;background:
+    radial-gradient(circle at 30% 30%, #ff9ab9 0 6%, transparent 7%),
+    radial-gradient(circle at 70% 70%, #ffd1dc 0 6%, transparent 7%);}
+  footer{margin-top:18px;text-align:center;color:#999;font-size:13px}
+  @media (max-width:420px){h1{font-size:20px}.avatar{width:64px;height:64px}}
+</style>
+</head>
+<body>
+<div class="card" role="main">
+  <div class="hearts" aria-hidden="true"></div>
+  <div class="header">
+    <div class="avatar" aria-hidden="true"></div>
+    <div>
+      <h1>Happy Birthday, Meri Jaan 🎂</h1>
+      <p class="lead">Aaj ka din tumhare naam — ek chhota sa surprise for you ❤️</p>
+    </div>
+  </div>
+
+  <div style="margin-top:6px">
+    <div class="bigplay">
+      <button id="openBtn" class="playbtn">Open Surprise ✨</button>
+      <div style="flex:1">
+        <div style="font-weight:600">From: <span style="color:var(--accent)">Tumhara</span></div>
+        <div class="note">Tip: Agar video play na ho to "Play" button dabao</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- video area -->
+  <div id="videoWrap" class="videoWrap" aria-hidden="true">
+    <!-- Replace the src video id after "embed/" with your YouTube video id -->
+    <iframe id="ytframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Surprise Video"></iframe>
+  </div>
+
+  <footer>
+    <div style="margin-bottom:6px">Click the big button to open the surprise. <br>Happy Birthday ❤️</div>
+  </footer>
+</div>
+
+<script>
+  // =========== CUSTOMIZE THESE ===========
+  const YOUTUBE_VIDEO_ID = "6WJFjXtHcy4"; // <-- replace with your YouTube video id
+  // Example: for https://www.youtube.com/watch?v=XXXXXXXXXXX use XXXXXXXXXXX
+  // If using Google Drive or other host, put an embeddable iframe src instead.
+  // ========================================
+  const openBtn = document.getElementById('openBtn')
+  const videoWrap = document.getElementById('videoWrap')
+  const ytframe = document.getElementById('ytframe')
+
+  openBtn.addEventListener('click', function(){
+    // set src with modest autoplay (browsers may block autoplay on mobile)
+    ytframe.src = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?rel=0&autoplay=1&modestbranding=1`
+    videoWrap.style.display = 'block'
+    videoWrap.setAttribute('aria-hidden','false')
+    // optional sweet message after opening
+    openBtn.textContent = "Enjoy ❤️"
+    openBtn.disabled = true
+  })
+</script>
+</body>
+</html>
